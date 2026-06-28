@@ -1,0 +1,671 @@
+{
+  "info": {
+    "_postman_id": "cb414510-5580-40a0-8322-acd6e32ea33c",
+    "name": "OT Clients Requests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "13993259"
+  },
+  "item": [
+    {
+      "name": "country findall",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url2}}/api/v1/country/findall?name=&enabled=true&countryCode=",
+          "host": [
+            "{{url2}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "country",
+            "findall"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "1",
+              "disabled": true
+            },
+            {
+              "key": "name",
+              "value": ""
+            },
+            {
+              "key": "enabled",
+              "value": "true"
+            },
+            {
+              "key": "countryCode",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "country countall",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url2}}/api/v1/country/countall?limit=1&name=united&enabled=true&countryCode=us",
+          "host": [
+            "{{url2}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "country",
+            "countall"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "1"
+            },
+            {
+              "key": "name",
+              "value": "united"
+            },
+            {
+              "key": "enabled",
+              "value": "true"
+            },
+            {
+              "key": "countryCode",
+              "value": "us"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "country get",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url2}}/api/v1/country/1",
+          "host": [
+            "{{url2}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "country",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "country post",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Dominican Republic\",\r\n    \"code\": \"DO\",\r\n    \"placeId\": \"ChIJUz3z_a_zr4kRy2s7K7_W_c\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url2}}/api/v1/country",
+          "host": [
+            "{{url2}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "country"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "client findall",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url2}}/api/v1/client/findall",
+          "host": [
+            "{{url2}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "client",
+            "findall"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "2",
+              "disabled": true
+            },
+            {
+              "key": "name",
+              "value": "",
+              "disabled": true
+            },
+            {
+              "key": "lastName",
+              "value": null,
+              "disabled": true
+            },
+            {
+              "key": "email",
+              "value": "",
+              "disabled": true
+            },
+            {
+              "key": "phoneNumber",
+              "value": "15551234567",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "client countall",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url2}}/api/v1/client/countall?name=&lastName&email=&phoneNumber=",
+          "host": [
+            "{{url2}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "client",
+            "countall"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": ""
+            },
+            {
+              "key": "lastName",
+              "value": null
+            },
+            {
+              "key": "email",
+              "value": ""
+            },
+            {
+              "key": "phoneNumber",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "address findall",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url2}}/api/v1/address/findall?enabled=true&fullName&phoneNumber=15553213210&street&building&city&stateProvince&country",
+          "host": [
+            "{{url2}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "address",
+            "findall"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "1",
+              "disabled": true
+            },
+            {
+              "key": "enabled",
+              "value": "true"
+            },
+            {
+              "key": "id",
+              "value": "6",
+              "disabled": true
+            },
+            {
+              "key": "clientId",
+              "value": "7",
+              "disabled": true
+            },
+            {
+              "key": "fullName",
+              "value": null
+            },
+            {
+              "key": "zipCode",
+              "value": "M5V 2B6",
+              "disabled": true
+            },
+            {
+              "key": "phoneNumber",
+              "value": "15553213210"
+            },
+            {
+              "key": "street",
+              "value": null
+            },
+            {
+              "key": "building",
+              "value": null
+            },
+            {
+              "key": "city",
+              "value": null
+            },
+            {
+              "key": "stateProvince",
+              "value": null
+            },
+            {
+              "key": "country",
+              "value": null
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "address countall",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url2}}/api/v1/address/countall?enabled=true",
+          "host": [
+            "{{url2}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "address",
+            "countall"
+          ],
+          "query": [
+            {
+              "key": "enabled",
+              "value": "true"
+            },
+            {
+              "key": "id",
+              "value": "6",
+              "disabled": true
+            },
+            {
+              "key": "clientId",
+              "value": "7",
+              "disabled": true
+            },
+            {
+              "key": "fullName",
+              "value": null,
+              "disabled": true
+            },
+            {
+              "key": "zipCode",
+              "value": "M5V 2B6",
+              "disabled": true
+            },
+            {
+              "key": "phoneNumber",
+              "value": "",
+              "disabled": true
+            },
+            {
+              "key": "street",
+              "value": null,
+              "disabled": true
+            },
+            {
+              "key": "building",
+              "value": null,
+              "disabled": true
+            },
+            {
+              "key": "city",
+              "value": null,
+              "disabled": true
+            },
+            {
+              "key": "stateProvince",
+              "value": null,
+              "disabled": true
+            },
+            {
+              "key": "country",
+              "value": null,
+              "disabled": true
+            },
+            {
+              "key": "address",
+              "value": "M5V 2B6",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "post client",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"John v3\",\r\n    \"lastName\": \"Doe\",\r\n    \"email\": \"john.doe.v3@example.com\",\r\n    \"phoneNumber\": \"+1-555-123-4567\",\r\n    \"addresses\": [\r\n        {\r\n            \"countryId\": 1,\r\n            \"fullName\": \"Mary Doe\",\r\n            \"city\": \"New York\",\r\n            \"stateProvince\": \"NY\",\r\n            \"street\": \"123 Main Street\",\r\n            \"zipCode\": \"10001\",\r\n            \"building\": \"Apt 4B\",\r\n            \"phoneNumber\": \"+1-555-321-3210\"\r\n        },\r\n        {\r\n            \"countryId\": 2,\r\n            \"fullName\": \"Mary Doe\",\r\n            \"city\": \"Toronto\",\r\n            \"stateProvince\": \"Ontario\",\r\n            \"street\": \"456 Queen Street W\",\r\n            \"zipCode\": \"M5V 2B6\",\r\n            \"building\": \"Suite 1205\",\r\n            \"phoneNumber\": \"+1-416-555-7890\"\r\n        },\r\n        {\r\n            \"countryId\": 2,\r\n            \"fullName\": \"John Son\",\r\n            \"city\": \"Quebec\",\r\n            \"stateProvince\": \"Quebec\",\r\n            \"street\": \"456 Queen Street W\",\r\n            \"zipCode\": \"M5V 2B6\",\r\n            \"building\": \"Suite 1205\",\r\n            \"phoneNumber\": \"+1-111-222-3333\"\r\n        }\r\n    ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url2}}/api/v1/client",
+          "host": [
+            "{{url2}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "client"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "1",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "put client",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\": 2,\r\n    \"name\": \"John v3\",\r\n    \"lastName\": \"Doe\",\r\n    \"email\": \"john.doe.v3@example.com\",\r\n    \"phoneNumber\": \"+1-555-123-4567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url2}}/api/v1/client",
+          "host": [
+            "{{url2}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "client"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "1",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get client",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url2}}/api/v1/client/2",
+          "host": [
+            "{{url2}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "client",
+            "2"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "1",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete client",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{url2}}/api/v1/client/2",
+          "host": [
+            "{{url2}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "client",
+            "2"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "1",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "post address",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"clientId\": 7,\r\n    \"fullName\": \"Mary Doe\",\r\n    \"countryId\": 1,\r\n    \"country\": \"United States of America\",\r\n    \"city\": \"New York\",\r\n    \"stateProvince\": \"NY\",\r\n    \"street\": \"123 Main Street\",\r\n    \"zipCode\": \"10001\",\r\n    \"building\": \"Apt 4B\",\r\n    \"phoneNumber\": \"+15553213210\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url2}}/api/v1/address",
+          "host": [
+            "{{url2}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "address"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "1",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "put address",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"id\": 3,\r\n    \"clientId\": 2,\r\n    \"countryId\": 1,\r\n    \"fullName\": \"Rafaela Marte\",\r\n    \"street\": \"Himrod St\",\r\n    \"building\": \"Apt 1B\",\r\n    \"city\": \"New Jersey\",\r\n    \"stateProvince\": \"NJ\",\r\n    \"phoneNumber\": \"+18095551555\",\r\n    \"zipCode\": \"12371\"\r\n}\r\n//     {\r\n//     \"id\": 7,\r\n//     \"clientId\": 7,\r\n//     \"fullName\": \"Mary Doe\",\r\n//     \"countryId\": 1,\r\n//     \"country\": \"United States of America\",\r\n//     \"city\": \"New York\",\r\n//     \"stateProvince\": \"NY\",\r\n//     \"street\": \"123 Main Street\",\r\n//     \"zipCode\": \"10001\",\r\n//     \"building\": \"Apt 4B\",\r\n//     \"phoneNumber\": \"+15553213210\"\r\n// }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url2}}/api/v1/address",
+          "host": [
+            "{{url2}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "address"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "1",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "get address",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url2}}/api/v1/address/1",
+          "host": [
+            "{{url2}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "address",
+            "1"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "1",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete address",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{url2}}/api/v1/address/2",
+          "host": [
+            "{{url2}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "address",
+            "2"
+          ],
+          "query": [
+            {
+              "key": "limit",
+              "value": "1",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
