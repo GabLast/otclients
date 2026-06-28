@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${DATABASE_URL:localhost}:${DB_PORT:5432}/${DB_NAME:otclients}?autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true
+    username: ${DB_USERNAME:postgre}
+    password: ${DB_PASSWORD:postgre}
+    driver-class-name: org.postgresql.Driver
+                      #org.postgresql.Driver #com.mysql.cj.jdbc.Driver
+    embedded-database-connection: none
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+      database-platform: org.hibernate.dialect.PostgreSQLDialect
+  h2:
+    console:
+      enabled: false
