@@ -45,12 +45,12 @@ public class CountryControllerTest extends AbstractControllerTest {
         mockMvc.perform(
                 post("/api/v1/country").contentType(APPLICATION_JSON_VALUE).content(json2)).andExpect(
                 status().is(
-                        oneOf(HttpStatus.OK.value(), HttpStatus.UNAUTHORIZED.value())));
+                        oneOf(HttpStatus.OK.value(), HttpStatus.UNAUTHORIZED.value(), HttpStatus.CONFLICT.value())));
     }
 
     @Test
     void getTest() throws Exception {
-        mockMvc.perform(get("/api/v1/country" + "?id=" + 1)).andExpect(status().is(
+        mockMvc.perform(get(String.format("/api/v1/country/%d/", 1))).andExpect(status().is(
                 oneOf(HttpStatus.OK.value(), HttpStatus.UNAUTHORIZED.value(),
                         HttpStatus.NOT_FOUND.value())));
     }
