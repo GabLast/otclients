@@ -14,6 +14,7 @@ import com.example.otclients.models.process.Address;
 import com.example.otclients.repositories.process.AddressRepository;
 import com.example.otclients.services.BaseService;
 import com.example.otclients.utils.OffsetBasedPageRequest;
+import com.example.otclients.utils.Utilities;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
@@ -54,7 +55,9 @@ public class AddressQueryService extends BaseService<Address, Long> {
         List<AddressFilterData> list = findAllFilter(
                 request.isEnabled(),
                 request.getId(), request.getClientId(),
-                request.getFullName(), request.getPhoneNumber(), request.getAddress(),
+                request.getFullName(), request.getPhoneNumber(),
+                request.getStreet(), request.getBuilding(), request.getCity(),
+                request.getStateProvince(), request.getZipCode(), request.getCountry(),
                 paginationObject.limit(), paginationObject.offset(),
                 paginationObject.sort()
         ).stream().map(it -> AddressFilterData.builder()
@@ -77,12 +80,21 @@ public class AddressQueryService extends BaseService<Address, Long> {
 
     private List<Address> findAllFilter(boolean enabled,
                                         Long id, Long clientId,
-                                        String fullName, String phoneNumber, String address,
+                                        String fullName, String phoneNumber,
+                                        String street, String building, String city,
+                                        String stateProvince, String zipCode,
+                                        String country,
                                         Integer limit, Integer offset, Sort sort) {
 
         return repository.findAllFilter(enabled, id, clientId,
-                fullName, phoneNumber,
-                address, address, address, address, address, address,
+                Utilities.normalizeFilter(fullName),
+                Utilities.normalizeFilter(phoneNumber),
+                Utilities.normalizeFilter(street),
+                Utilities.normalizeFilter(building),
+                Utilities.normalizeFilter(city),
+                Utilities.normalizeFilter(stateProvince),
+                Utilities.normalizeFilter(zipCode),
+                Utilities.normalizeFilter(country),
                 sort == null ? new OffsetBasedPageRequest(limit, offset) : new OffsetBasedPageRequest(limit, offset, sort));
     }
 
@@ -93,7 +105,9 @@ public class AddressQueryService extends BaseService<Address, Long> {
                         .total(countAllFilter(
                                 request.isEnabled(),
                                 request.getId(), request.getClientId(),
-                                request.getFullName(), request.getPhoneNumber(), request.getAddress()
+                                request.getFullName(), request.getPhoneNumber(),
+                                request.getStreet(), request.getBuilding(), request.getCity(),
+                                request.getStateProvince(), request.getZipCode(), request.getCountry()
                         ))
                         .build())
                 .build();
@@ -101,11 +115,20 @@ public class AddressQueryService extends BaseService<Address, Long> {
 
     private Integer countAllFilter(boolean enabled,
                                    Long id, Long clientId,
-                                   String fullName, String phoneNumber, String address) {
+                                   String fullName, String phoneNumber,
+                                   String street, String building, String city,
+                                   String stateProvince, String zipCode,
+                                   String country) {
 
         return repository.countAllFilter(enabled, id, clientId,
-                fullName, phoneNumber,
-                address, address, address, address, address, address
+                Utilities.normalizeFilter(fullName),
+                Utilities.normalizeFilter(phoneNumber),
+                Utilities.normalizeFilter(street),
+                Utilities.normalizeFilter(building),
+                Utilities.normalizeFilter(city),
+                Utilities.normalizeFilter(stateProvince),
+                Utilities.normalizeFilter(zipCode),
+                Utilities.normalizeFilter(country)
         );
     }
 

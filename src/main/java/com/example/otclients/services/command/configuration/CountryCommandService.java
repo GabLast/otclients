@@ -64,19 +64,17 @@ public class CountryCommandService extends BaseService<Country, Long> {
             throw new InvalidDataFormat("The placeId can not be blank");
         }
 
-        if(saveObject != null && !saveObject.getId().equals(request.id())) {
-
-            if(countryQueryService.findByAnyIdentifier(true, request.name()).isPresent()) {
-                throw new ResourceExistsException("A country with the value " + request.name() + " already exists.");
-            }
-
-            if(countryQueryService.findByAnyIdentifier(true, request.code()).isPresent()) {
-                throw new ResourceExistsException("A country with the value " + request.code() + " already exists.");
-            }
-
-            if(countryQueryService.findByAnyIdentifier(true, request.placeId()).isPresent()) {
-                throw new ResourceExistsException("A country with the value " + request.placeId() + " already exists.");
-            }
+        Optional<Country> tmp = countryQueryService.findByAnyIdentifier(true, request.name());
+        if (tmp.isPresent() && !tmp.get().getId().equals(request.id())) {
+            throw new ResourceExistsException("A country with the value " + request.name() + " already exists.");
+        }
+        tmp = countryQueryService.findByAnyIdentifier(true, request.code());
+        if (tmp.isPresent() && !tmp.get().getId().equals(request.id())) {
+            throw new ResourceExistsException("A country with the value " + request.code() + " already exists.");
+        }
+        tmp = countryQueryService.findByAnyIdentifier(true, request.placeId());
+        if (tmp.isPresent() && !tmp.get().getId().equals(request.id())) {
+            throw new ResourceExistsException("A country with the value " + request.placeId() + " already exists.");
         }
 
         saveObject = Country.builder()

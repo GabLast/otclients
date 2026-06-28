@@ -13,16 +13,16 @@ import java.util.Optional;
 @Repository
 public interface CountryRepository extends JpaRepository<Country, Long> {
 
-    @Query("select " +
-            "u " +
-            "from Country as u " +
-            "where u.enabled = :enabled " +
-            "and ("
-            + "(lower(trim(u.name)) like trim(lower(:value))) "
-            + "or (lower(trim(u.countryCode)) like trim(lower(:value))) "
-            + "or (lower(trim(u.placeId)) like trim(lower(:value))) "
-            + ")"
-    )
+    @Query("""
+            select u
+            from Country u
+            where u.enabled = :enabled
+              and (
+                lower(trim(u.name)) like trim(lower(:value))
+                or lower(trim(u.countryCode)) = trim(lower(:value))
+                or lower(trim(u.placeId)) = trim(lower(:value))
+              )
+            """)
     Optional<Country> findByAnyIdentifier(@Param("enabled") boolean enabled, @Param("value") String value);
 
     List<Country> findAllByEnabled(boolean e);

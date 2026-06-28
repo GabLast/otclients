@@ -13,5 +13,10 @@ public class AddressFilterRequest extends RequestPagination implements JsonReque
     private Long clientId = null;
     private String fullName = null;
     private String phoneNumber = null;
-    private String address = null;
+    private String street = null;
+    private String building = null;
+    private String city = null;
+    private String stateProvince = null;
+    private String zipCode = null;
+    private String country = null;
 }

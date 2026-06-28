@@ -44,6 +44,10 @@ public class AddressCommandService extends BaseService<Address, Long> {
         Client client = clientQueryService.get(request.clientId()).orElseThrow(() ->
                 new ResourceNotFoundException(String.format("Client with ID %d does not exist", request.clientId())));
 
+        if(!client.isEnabled()) {
+            throw new ResourceNotFoundException(String.format("Client with ID %d does not exist", request.clientId()));
+        }
+
         if (request.countryId() == null || request.countryId() <= 0L) {
             throw new InvalidActionException(String.format("Address %s has no country", request.fullName()));
         }

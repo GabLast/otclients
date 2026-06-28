@@ -50,11 +50,6 @@ public class Utilities {
                 return field;
             }
         }
-        for (Field field : entityType.getDeclaredFields()) {
-            if (field.isAnnotationPresent(Id.class)) {
-                return field;
-            }
-        }
         return null;
     }
 
@@ -225,5 +220,11 @@ public class Utilities {
     //Only for E.164 format (recommended for international numbers)
     public static boolean isValidPhoneNumber(String phone) {
         return phone != null && phone.matches("^\\+[1-9]\\d{1,14}$");
+    }
+
+    public static String normalizeFilter(String value) {
+        return value == null || value.trim().isEmpty()
+                ? ""
+                : value.trim().toLowerCase();
     }
 }

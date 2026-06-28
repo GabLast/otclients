@@ -14,6 +14,7 @@ import com.example.otclients.models.process.Client;
 import com.example.otclients.repositories.process.ClientRepository;
 import com.example.otclients.services.BaseService;
 import com.example.otclients.utils.OffsetBasedPageRequest;
+import com.example.otclients.utils.Utilities;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
@@ -82,7 +83,11 @@ public class ClientQueryService extends BaseService<Client, Long> {
 
         return repository.findAllFilter(
                 enabled,
-                id, name, lastname, email, phonenumber,
+                id,
+                Utilities.normalizeFilter(name),
+                Utilities.normalizeFilter(lastname),
+                Utilities.normalizeFilter(email),
+                Utilities.normalizeFilter(phonenumber),
                 sort == null ? new OffsetBasedPageRequest(limit, offset) : new OffsetBasedPageRequest(limit, offset, sort)
         );
     }
@@ -94,7 +99,11 @@ public class ClientQueryService extends BaseService<Client, Long> {
 
         return repository.countAllFilter(
                 enabled,
-                id, name, lastname, email, phonenumber
+                id,
+                Utilities.normalizeFilter(name),
+                Utilities.normalizeFilter(lastname),
+                Utilities.normalizeFilter(email),
+                Utilities.normalizeFilter(phonenumber)
         );
     }
 
@@ -104,7 +113,7 @@ public class ClientQueryService extends BaseService<Client, Long> {
 
     public ClientResponse getClient(Long id) {
         Optional<Client> object = get(id);
-        if (object.isEmpty()) {
+        if (object.isEmpty() || !object.get().isEnabled()) {
             throw new ResourceNotFoundException("Client does not exist");
         }
 

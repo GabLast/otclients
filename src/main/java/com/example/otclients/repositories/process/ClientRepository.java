@@ -13,14 +13,14 @@ import java.util.List;
 public interface ClientRepository extends JpaRepository<Client, Long> {
 
     @Query("""
-                select u
-                from Client u
-                where u.enabled = :enabled
-                  and (:id is null or u.id = :id)
-                  and (:name is null or trim(lower(u.name)) like concat('%', trim(lower(:name)), '%'))
-                  and (:lastName is null or trim(lower(u.lastName)) like concat('%', trim(lower(:lastName)), '%'))
-                  and (:email is null or trim(lower(u.email)) like concat('%', trim(lower(:email)), '%'))
-                  and (:phoneNumber is null or trim(lower(u.phoneNumber)) like concat('%', trim(lower(:phoneNumber)), '%'))
+            select u
+            from Client u
+            where u.enabled = :enabled
+              and (:id is null or u.id = :id)
+              and (:name is null or trim(lower(u.name)) like concat('%', :name, '%'))
+              and (:lastName is null or trim(lower(u.lastName)) like concat('%', :lastName, '%'))
+              and (:email is null or trim(lower(u.email)) like concat('%', :email, '%'))
+              and (:phoneNumber is null or trim(lower(u.phoneNumber)) like concat('%', :phoneNumber, '%'))
             """)
     List<Client> findAllFilter(
             @Param("enabled") boolean enabled,
@@ -38,10 +38,10 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
                 from Client u
                 where u.enabled = :enabled
                   and (:id is null or u.id = :id)
-                  and (:name is null or trim(lower(u.name)) like concat('%', trim(lower(:name)), '%'))
-                  and (:lastName is null or trim(lower(u.lastName)) like concat('%', trim(lower(:lastName)), '%'))
-                  and (:email is null or trim(lower(u.email)) like concat('%', trim(lower(:email)), '%'))
-                  and (:phoneNumber is null or trim(lower(u.phoneNumber)) like concat('%', trim(lower(:phoneNumber)), '%'))
+                  and (:name is null or trim(lower(u.name)) like concat('%', :name, '%'))
+                  and (:lastName is null or trim(lower(u.lastName)) like concat('%', :lastName, '%'))
+                  and (:email is null or trim(lower(u.email)) like concat('%', :email, '%'))
+                  and (:phoneNumber is null or trim(lower(u.phoneNumber)) like concat('%', :phoneNumber, '%'))
             """)
     Integer countAllFilter(
             @Param("enabled") boolean enabled,
