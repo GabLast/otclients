@@ -18,6 +18,7 @@ import com.example.otclients.models.configurations.Country;
 import com.example.otclients.repositories.configuration.CountryRepository;
 import com.example.otclients.services.BaseService;
 import com.example.otclients.utils.OffsetBasedPageRequest;
+import com.example.otclients.utils.Utilities;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
@@ -67,14 +68,20 @@ public class CountryQueryService extends BaseService<Country, Long> {
     @Transactional(readOnly = true)
     public List<Country> findAllFilter(Boolean enabled, String name, String description,
             Integer limit, Integer offset, Sort sort) {
-        return repository.findAllFilter(enabled, name, description,
+        return repository.findAllFilter(
+                enabled,
+                Utilities.normalizeFilter(name),
+                Utilities.normalizeFilter(description),
                 sort == null ? new OffsetBasedPageRequest(limit, offset)
                              : new OffsetBasedPageRequest(limit, offset, sort));
     }
 
     @Transactional(readOnly = true)
     public Integer countAllFilter(Boolean enabled, String name, String description) {
-        return repository.countAllFilter(enabled, name, description);
+        return repository.countAllFilter(enabled,
+                Utilities.normalizeFilter(name),
+                Utilities.normalizeFilter(description)
+        );
     }
 
     public CountryFilterResponse findAllFilter(CountryFilterRequest request) {
