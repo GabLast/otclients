@@ -4,6 +4,7 @@ import com.example.otclients.dto.request.process.AddressRequest;
 import com.example.otclients.dto.response.process.AddressData;
 import com.example.otclients.dto.response.process.AddressResponse;
 import com.example.otclients.exceptions.InvalidActionException;
+import com.example.otclients.exceptions.InvalidDataFormat;
 import com.example.otclients.exceptions.ResourceNotFoundException;
 import com.example.otclients.models.configurations.Country;
 import com.example.otclients.models.process.Address;
@@ -82,6 +83,9 @@ public class AddressCommandService extends BaseService<Address, Long> {
         }
         if (!StringUtils.hasText(addressPhoneNumber)) {
             throw new NullPointerException("Address phone number can not be empty");
+        }
+        if (!Utilities.isValidPhoneNumber(addressPhoneNumber)) {
+            throw new InvalidDataFormat("Invalid phone number. Please follow the standard international numbers like +14155552671");
         }
         if (!StringUtils.hasText(zipCode)) {
             throw new NullPointerException("Address zip code can not be empty");
