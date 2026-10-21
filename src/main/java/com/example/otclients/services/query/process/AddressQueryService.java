@@ -71,6 +71,7 @@ public class AddressQueryService extends BaseService<Address, Long> {
                 .stateProvince(it.getStateProvince())
                 .building(it.getBuilding())
                 .zipCode(it.getZipCode())
+                .city(it.getCity())
                 .build()).toList();
 
         return AddressFilterResponse.builder()
